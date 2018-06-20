@@ -6,4 +6,6 @@ pids
 coverage
 node_modules
 bower_components
+*.xml
+*.iml
 .DS_Store
