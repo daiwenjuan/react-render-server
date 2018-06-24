@@ -31,11 +31,11 @@ const app = require('./app'),
   hotMiddleware = require('koa-webpack-hot-middleware'),
   views = require('koa-views'),
   router = require('./routes')
-clientRoute = require('./middlewares/clientRoute'),
+  clientRoute = require('./middlewares/clientRoute'),
   config = require('../build/webpack.dev.config'),
   port = process.env.port || 3000,
   compiler = webpack(config)
-compiler.plugin('emit', (compilation, callback) => {
+  compiler.plugin('emit', (compilation, callback) => {
   const assets = compilation.assets
   let file, data
 

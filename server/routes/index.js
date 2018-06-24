@@ -5,15 +5,20 @@ import fs from 'fs'
 import path from 'path'
 import Router from 'koa-router'
 
-const router = new Router({ prefix: '/api' })
+const router = new Router({prefix: '/api'})
 let subRouter
 
 fs.readdirSync(__dirname)
-  .filter(filename =>
-    filename !== path.basename(__filename)
+  .filter(filename => {
+      console.log('====filename========')
+      console.log(filename)
+      return filename !== path.basename(__filename)
+    }
   )
   .forEach(filename => {
     subRouter = require(`./${filename}`)
+    console.log('======subRouter=========')
+    console.log(subRouter)
     router.use(subRouter.routes(), subRouter.allowedMethods())
   })
 
