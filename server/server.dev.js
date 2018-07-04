@@ -4,15 +4,11 @@
 require('babel-polyfill')
 require('source-map-support').install()
 require('babel-register')
+const lessParser = require('postcss-less').parse
 require('css-modules-require-hook')({
   extensions: ['.less'],
-  preprocessCss: (data, filename) =>
-    require('node-less').renderSync({
-      data,
-      file: filename
-    }).css,
-  camelCase: true,
-  generateScopedName: '[name]__[local]__[hash:base64:8]'
+  processorOpts: { parser: lessParser },
+  generateScopedName: '[hash:base64]'
 })
 require('asset-require-hook')({
   name: '/[hash].[ext]',

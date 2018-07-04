@@ -14,7 +14,6 @@ function getExternals() {
     .filter(filename => !filename.includes('.bin'))
     .reduce((externals, filename) => {
       externals[filename] = `commonjs ${filename}`
-
       return externals
     }, {})
 }
@@ -38,35 +37,27 @@ clientConfig = {
     publicPath: '/'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['es2015', 'react', 'stage-0'],
-        plugins: ['transform-runtime', 'add-module-exports'],
-        cacheDirectory: true
-      }
+      use: 'babel-loader'
     }, {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style',
-        'css?modules&camelCase&importLoaders=1&localIdentName=[hash:base64:8]!postcss!sass')
+      test: /\.(less|css)$/,
+      use: ['style-loader', 'css-loader?modules', 'less-loader']
     }, {
       test: /\.(jpg|png|gif|webp)$/,
-      loader: 'url?limit=8000'
+      use: 'url?limit=8000'
     }, {
       test: /\.json$/,
-      loader: 'json'
+      use: 'json'
     }, {
       test: /\.html$/,
-      loader: 'html?minimize=false'
+      use: 'html-loader?minimize=false'
     }]
   },
-  postcss: [autoprefixer({ browsers: ['> 5%'] })],
-  resolve: { extensions: ['', '.js', '.json', '.scss'] },
+  resolve: { extensions: ['.js', '.json'] },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest'],
       filename: '[name].[chunkhash:8].js'
@@ -99,34 +90,25 @@ serverConfig = {
     __dirname: true
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['es2015', 'react', 'stage-0'],
-        plugins: ['add-module-exports'],
-        cacheDirectory: true
-      }
+      use: 'babel-loader'
     }, {
-      test: /\.scss$/,
-      loaders: [
-        'css/locals?modules&camelCase&importLoaders=1&localIdentName=[hash:base64:8]',
-        'sass'
-      ]
+      test: /\.(less|css)$/,
+      use: ['style-loader', 'css-loader?modules', 'less-loader']
     }, {
       test: /\.(jpg|png|gif|webp)$/,
-      loader: 'url?limit=8000'
+      use: 'url?limit=8000'
     }, {
       test: /\.json$/,
-      loader: 'json'
+      use: 'json'
     }]
   },
   externals: getExternals(),
-  resolve: { extensions: ['', '.js', '.json', '.scss'] },
+  resolve: { extensions: ['.js', '.json'] },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       comments: false

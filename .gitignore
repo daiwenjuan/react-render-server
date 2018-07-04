@@ -5,6 +5,7 @@ pids
 *.seed
 coverage
 node_modules
+dist
 bower_components
 *.xml
 *.iml

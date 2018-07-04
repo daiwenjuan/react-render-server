@@ -35,6 +35,9 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader'
       }, {
+        test: /\.(less|css)$/,
+        use: ['style-loader', 'css-loader?modules', 'less-loader']
+      }, {
         test: /\.(jpg|png|gif|webp)$/,
         use: 'url?limit=8000'
       }, {
