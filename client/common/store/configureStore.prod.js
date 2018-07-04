@@ -3,14 +3,13 @@
  */
 import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
+debugger
 import rootReducer from '../reducers'
 
 export default function configureStore(preloadedState) {
-  const store = createStore(
+  return createStore(
     rootReducer,
     preloadedState,
     applyMiddleware(thunk)
   )
-
-  return store
 }

@@ -3,9 +3,9 @@
  */
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
+debugger
 import rootReducer from '../reducers'
-import DevTools from '../containers/DevTools'
-
+import DevTools from '../../layout/DevTools'
 export default function configureStore(preloadedState) {
   const store = createStore(
     rootReducer,
@@ -15,14 +15,11 @@ export default function configureStore(preloadedState) {
       DevTools.instrument()
     )
   )
-
   if (module.hot) {
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers')
-
       store.replaceReducer(nextRootReducer)
     })
   }
-
   return store
 }

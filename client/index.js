@@ -2,8 +2,10 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Router, match, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
-import routes from './routes'
+debugger
 import configureStore from './common/store/configureStore'
+import routes from './routes'
+
 const store = configureStore(window.REDUX_STATE)
 
 match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {

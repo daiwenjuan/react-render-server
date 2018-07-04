@@ -10,11 +10,11 @@ if (typeof require.ensure !== 'function') {
 const routes = {
   childRoutes: [{
     path: '/',
-    component: require('./common/containers/Root'),
+    component: require('./layout/Root'),
     indexRoute: {
       getComponent(nextState, callback) {
         require.ensure([], require => {
-          callback(null, require('./home/containers/App'))
+          callback(null, require('./home'))
         }, 'home')
       }
     },
