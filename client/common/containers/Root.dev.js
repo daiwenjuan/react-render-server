@@ -30,4 +30,4 @@ class Root extends Component {
   }
 }
 
-export default Root
+module.exports = Root

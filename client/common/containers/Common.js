@@ -8,15 +8,11 @@ import Main from '../components/Main'
 import actions from '../actions'
 
 class Common extends Component {
-  constructor() {
-    super()
-  }
 
   render() {
     const { children, ...props } = this.props
-
     return (
-      <div >
+      <div>
         <Main>
           {Children.map(children, child =>
             cloneElement(child, { ...props })

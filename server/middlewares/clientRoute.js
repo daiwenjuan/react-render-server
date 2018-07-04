@@ -31,4 +31,4 @@ async function clientRoute(ctx, next) {
   }
 }
 
-export default clientRoute
+module.exports = clientRoute
