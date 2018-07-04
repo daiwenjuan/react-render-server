@@ -36,7 +36,7 @@ module.exports = {
         use: 'babel-loader'
       }, {
         test: /\.(less|css)$/,
-        use: ['style-loader', 'css-loader?modules', 'less-loader']
+        use: ['style-loader', 'css-loader?modules&localIdentName=[local]__[hash:base64:5]', 'less-loader']
       }, {
         test: /\.(jpg|png|gif|webp)$/,
         use: 'url?limit=8000'

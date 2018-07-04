@@ -8,7 +8,7 @@ const lessParser = require('postcss-less').parse
 require('css-modules-require-hook')({
   extensions: ['.less'],
   processorOpts: { parser: lessParser },
-  generateScopedName: '[hash:base64]'
+  generateScopedName: '[local]__[hash:base64:5]'
 })
 require('asset-require-hook')({
   name: '/[hash].[ext]',
