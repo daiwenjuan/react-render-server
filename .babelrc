@@ -33,6 +33,7 @@
         "moduleName": "babel-runtime"
       }
     ],
-    "add-module-exports"
+    "add-module-exports",
+    "transform-decorators-legacy"
   ]
 }

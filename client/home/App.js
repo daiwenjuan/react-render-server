@@ -5,16 +5,23 @@ import React, { Component } from 'react'
 import styles from './app.module.less'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import actions from './action'
+import { test } from './action'
 import key from './key'
-class App extends Component {
+import EnhanceConnect from '../common/EnhanceConnect'
+@EnhanceConnect((state) => {
+  return {
+    text: state[key.ID].text,
+  }
+}, { test })
+export default class App extends Component {
+
   handleOnClick = () => {
-    let { actions } = this.props
-    actions.test()
+    let { test } = this.props
+    test()
   }
 
   render() {
-    let { text } = this.props[key.ID] || {}
+    let { text } = this.props
     return (
       <div className={styles.app} onClick={this.handleOnClick}>
         {text ? text : 'hello world'}
@@ -22,18 +29,18 @@ class App extends Component {
     )
   }
 }
-
-function mapStateToProps(state) {
-  return state
-}
-
-function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(actions, dispatch) }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+//
+// function mapStateToProps(state) {
+//   return state
+// }
+//
+// function mapDispatchToProps(dispatch) {
+//   return { actions: bindActionCreators(actions, dispatch) }
+// }
+//
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(App)
 
 

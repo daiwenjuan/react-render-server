@@ -3,9 +3,6 @@
  */
 import key from './key'
 
-function test() {
+export function test() {
   return { type: key.TEST, payload: 'hello redux' }
-}
-export default {
-  test
 }

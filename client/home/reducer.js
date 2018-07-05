@@ -3,7 +3,7 @@
  */
 import key from './key'
 let map = {}
-export default function (state = null, action) {
+export default function (state = {}, action) {
   if (!map[action.type] || typeof map[action.type] !== 'function') {
     return state
   }
