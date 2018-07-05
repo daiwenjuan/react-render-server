@@ -15,6 +15,7 @@ require('asset-require-hook')({
   extensions: ['jpg', 'png', 'gif', 'webp'],
   limit: 8000
 })
+
 const app = require('./app'),
   convert = require('koa-convert'),
   webpack = require('webpack'),
@@ -43,14 +44,14 @@ compiler.plugin('emit', (compilation, callback) => {
 })
 //这样就可以了，你可以在html文件中使用ejs语法<% %>了
 app.use(views(path.resolve(__dirname, '../views/dev'), { map: { html: 'ejs' } }))
-app.use(clientRoute)
-app.use(router.routes())
-app.use(router.allowedMethods())
 console.log(`\n==> 🌎  Listening on port ${port}. Open up http://localhost:${port}/ in your browser.\n`)
 app.use(convert(devMiddleware(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath
 })))
 app.use(convert(hotMiddleware(compiler)))
+app.use(clientRoute)
+app.use(router.routes())
+app.use(router.allowedMethods())
 app.listen(port)
 

@@ -16,6 +16,7 @@ class Singleton {
 
   setPlugin(plugin) {
     this.plugins.push(plugin)
+    return this
   }
 
   getPlugins() {

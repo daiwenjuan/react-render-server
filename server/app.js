@@ -8,7 +8,6 @@ import logger from 'koa-logger'
 import session from 'koa-session'
 import compress from 'koa-compress'
 import convert from 'koa-convert'
-
 const app = new Koa()
 
 //app.keys = ['this is a fucking secret'] //设置签名的 Cookie 密钥

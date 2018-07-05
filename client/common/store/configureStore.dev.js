@@ -3,7 +3,6 @@
  */
 import { applyMiddleware, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
-debugger
 import rootReducer from '../reducers'
 import DevTools from '../../layout/DevTools'
 export default function configureStore(preloadedState) {

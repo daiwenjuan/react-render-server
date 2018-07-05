@@ -2,15 +2,14 @@
  *  Created by daiwenjuan on 2018/7/4 下午7:00.
  */
 import key from './key'
-function userInfo(state = null, action) {
-  switch (action.type) {
-    case key.TEST:
-      return { ...state, text: 'sdfdsf' }
-    default:
-      return state
+let map = {}
+export default function (state = null, action) {
+  if (!map[action.type] || typeof map[action.type] !== 'function') {
+    return state
   }
+  return map[action.type](state, action)
+}
+map[key.TEST] = function (state, action) {
+  return { ...state, text: action.payload }
 }
 
-export default {
-  userInfo
-}

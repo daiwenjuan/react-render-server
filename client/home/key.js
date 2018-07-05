@@ -4,5 +4,5 @@
 const ID = '@home'
 module.exports = {
   ID,
-  TEST: `${ID}_TEST`,
+  TEST: `${ID}/TEST`,
 }

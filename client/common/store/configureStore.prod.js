@@ -3,7 +3,6 @@
  */
 import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
-debugger
 import rootReducer from '../reducers'
 
 export default function configureStore(preloadedState) {

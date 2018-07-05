@@ -6,6 +6,7 @@ import styles from './app.module.less'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from './action'
+import key from './key'
 class App extends Component {
   handleOnClick = () => {
     let { actions } = this.props
@@ -13,10 +14,10 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
+    let { text } = this.props[key.ID] || {}
     return (
       <div className={styles.app} onClick={this.handleOnClick}>
-        hello world
+        {text ? text : 'hello world'}
       </div>
     )
   }

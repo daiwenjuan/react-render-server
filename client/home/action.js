@@ -4,7 +4,7 @@
 import key from './key'
 
 function test() {
-  return { type: key.TEST }
+  return { type: key.TEST, payload: 'hello redux' }
 }
 export default {
   test

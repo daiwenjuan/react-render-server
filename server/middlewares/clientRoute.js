@@ -11,11 +11,9 @@ const store = configureStore()
 
 async function clientRoute(ctx, next) {
   let _renderProps
-
   match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {
     _renderProps = renderProps
   })
-
   if (_renderProps) {
     await ctx.render('index', {
       root: renderToString(
