@@ -5,6 +5,7 @@ import React, { Component } from 'react'
 import styles from './app.module.less'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Button } from 'antd'
 import { test } from './action'
 import key from './key'
 import EnhanceConnect from '../common/EnhanceConnect'
@@ -25,6 +26,7 @@ export default class App extends Component {
     return (
       <div className={styles.app} onClick={this.handleOnClick}>
         {text ? text : 'hello world'}
+        <Button type="danger">Danger</Button>
       </div>
     )
   }

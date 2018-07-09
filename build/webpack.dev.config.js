@@ -38,11 +38,14 @@ module.exports = {
         test: /\.(less|css)$/,
         use: ['style-loader', 'css-loader?modules&localIdentName=[local]__[hash:base64:5]', 'less-loader']
       }, {
+        test: /\.css$/,
+        loader: 'style-loader!css'
+      }, {
         test: /\.(jpg|png|gif|webp)$/,
-        use: 'url?limit=8000'
+        use: 'url-loader?limit=8000'
       }, {
         test: /\.json$/,
-        use: 'json'
+        use: 'json-loader'
       }, {
         test: /\.html$/,
         use: 'html-loader?minimize=false'
