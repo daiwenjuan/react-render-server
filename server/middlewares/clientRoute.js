@@ -9,6 +9,7 @@ import routes from '../../client/routes'
 import configureStore from '../../client/common/store/configureStore'
 const store = configureStore()
 
+
 async function clientRoute(ctx, next) {
   let _renderProps
   match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {

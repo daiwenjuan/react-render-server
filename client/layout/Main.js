@@ -10,9 +10,8 @@ class Main extends Component {
 
   render() {
     const { children } = this.props
-
     return (
-      <main >
+      <main style={{ height: '100%' }}>
         {children}
       </main>
     )
