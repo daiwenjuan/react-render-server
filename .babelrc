@@ -33,6 +33,13 @@
         "moduleName": "babel-runtime"
       }
     ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
+    ],
     "add-module-exports",
     "transform-decorators-legacy"
   ]

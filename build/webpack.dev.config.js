@@ -35,11 +35,24 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader'
       }, {
-        test: /\.(less|css)$/,
+        test: /\.(less)$/,
+        exclude: /node_modules/,
         use: ['style-loader', 'css-loader?modules&localIdentName=[local]__[hash:base64:5]', 'less-loader']
       }, {
         test: /\.css$/,
-        loader: 'style-loader!css'
+        exclude: /client/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          }
+        ]
+      }, {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [ 'file-loader']
       }, {
         test: /\.(jpg|png|gif|webp)$/,
         use: 'url-loader?limit=8000'
