@@ -5,6 +5,7 @@ const path = require('path'),
   webpack = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   ProgressBarPlugin = require('progress-bar-webpack-plugin')
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -37,7 +38,12 @@ module.exports = {
       }, {
         test: /\.(less)$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader?modules&localIdentName=[local]__[hash:base64:5]', 'less-loader']
+        use: ['style-loader',
+          'css-loader?modules&localIdentName=[local]__[hash:base64:5]', 'less-loader']
+      }, {
+        test: /\.less$/,
+        exclude: /client/,
+        use: [`less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify({ 'primary-color': '#1DA57A' })}}`]
       }, {
         test: /\.css$/,
         exclude: /client/,
@@ -52,7 +58,7 @@ module.exports = {
         ]
       }, {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [ 'file-loader']
+        use: ['file-loader']
       }, {
         test: /\.(jpg|png|gif|webp)$/,
         use: 'url-loader?limit=8000'

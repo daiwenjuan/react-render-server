@@ -35,7 +35,7 @@ export default class App extends Component {
           <Menu.Item key="2">nav 2</Menu.Item>
           <Menu.Item key="3">nav 3</Menu.Item>
         </Menu>
-        <div>sdfsdfsdf</div>
+        <div className="des">啦啦啦，啦啦啦，我是卖报的小行家。。。</div>
       </div>
     )
   }

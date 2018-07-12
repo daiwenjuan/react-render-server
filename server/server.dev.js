@@ -11,7 +11,7 @@ require('css-modules-require-hook')({
   generateScopedName: '[local]__[hash:base64:5]'
 })
 require('css-modules-require-hook')({
-  extensions: ['.css'],
+  extensions: ['.css']
 })
 require('asset-require-hook')({
   extensions: ['jpg', 'png', 'gif', 'webp', 'woff', 'woff2', 'eot', 'ttf', 'otf']
