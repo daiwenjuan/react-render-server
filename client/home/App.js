@@ -61,7 +61,7 @@ export default class App extends Component {
           {this.test.map((line, key) => {
             return <CheckBoxGroup dataSource={line} key={key} name={line.name}>
               {line.children.map((item, index) => {
-                return <GroupItem dataSource={item} key={index}>{item}</GroupItem>
+                return <GroupItem itemData={item} key={index}>{item}</GroupItem>
               })}
             </CheckBoxGroup>
           })}

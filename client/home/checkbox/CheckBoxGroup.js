@@ -30,9 +30,9 @@ export default class CheckBoxGroup extends PureComponent {
   }
 
   handleChildernOnChange = (name, e, index) => {
-    //let {checkedAll} = this.state
-    //checkedAll[name] = e.target.checked
-    //this.setState({checked, checkedAll})
+    let checkedAll = {}
+    checkedAll[name] = e.target.checked
+    this.setState({checkedAll})
   }
 
   handleOnChange = (e) => {
@@ -43,10 +43,10 @@ export default class CheckBoxGroup extends PureComponent {
   }
 
   renderTitle () {
-    let {renderTitle, name, dataSource} = this.props
+    let {renderTitle, name} = this.props
     let {checkedAll} = this.state
     return <div>
-      <Checkbox onChange={this.handleOnChange} checked={dataSource.checked}>
+      <Checkbox onChange={this.handleOnChange} checked={checkedAll[name]}>
         {renderTitle && renderTitle()}
       </Checkbox>
     </div>
